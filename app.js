@@ -1,46 +1,24 @@
-// Получить число pi из Math и округлить его до 2-х знаков после точки
-const pi = + (Math.PI).toFixed(2);
-
-// Используя Math, найти максимальное и минимальное числа из представленного ряда 15, 11, 16, 12, 51, 12, 13, 51
-
-const min = Math.min(15, 11, 16, 12, 51, 12, 13, 51);
-const max = Math.max(15, 11, 16, 12, 51, 12, 13, 51);
-
-/*Работа с Math.random:
-a. Получить случайное число и округлить его до двух цифр после запятой
-b. Получить случайное целое число от 0 до X. X - любое произвольное число. */
-
-const randomNumA = + (Math.random() * 10).toFixed(2);
-const x = 111;
-const randomNumB = + (Math.random() * x).toFixed();
-
-// Проверить результат вычисления 0.6 + 0.7 - как привести к нормальному виду (1.3)?
-
-let res = + (0.6 + 0.7).toFixed(1);
-
-// Получить число из строки ‘100$’
-let numParse = parseInt('100$');
-
 /*
-Создайте функцию readNumber, которая будет запрашивать ввод числового значения до тех пор, пока посетитель его не введёт.
+Создайте функцию truncate(str, maxlength), которая проверяет длину строки str и, если она превосходит maxlength, заменяет конец str на "…", так, чтобы её длина стала равна maxlength.
 
-Функция должна возвращать числовое значение.
+Результатом функции должна быть та же строка, если усечение не требуется, либо, если необходимо, усечённая строка.
 
-Также надо разрешить пользователю остановить процесс ввода, отправив пустую строку или нажав «Отмена». В этом случае функция должна вернуть null.
+Например:
+
+truncate("Вот, что мне хотелось бы сказать на эту тему:", 20) = "Вот, что мне хотело…"
+
+truncate("Всем привет!", 20) = "Всем привет!"
 */
-
-function readNumber() {
-    let enterNum = prompt('enter number:', '');
-    if(isFinite(enterNum)){
-        return enterNum;
-    }
-    else if(enterNum === null || enterNum ===''){
-        return null;
-    }
-    else{
-        while(!isFinite(enterNum)){
-            enterNum = prompt('enter number:', '');
+function truncate(str, maxlength) {
+    if (str.length > maxlength) {
+        let newStr = '';
+        for (let i = 0; i < maxlength; i++) {
+            (i == maxlength - 1) ? newStr += '...' : newStr += str[i];
         }
+        return newStr;
+    } else {
+        return str;
     }
 }
-
+let truncateStr = truncate("Вот, что мне хотелось бы сказать на эту тему:", 20);
+console.log(truncateStr);
