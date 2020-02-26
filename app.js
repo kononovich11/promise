@@ -13,14 +13,39 @@
 Рэп, Регги, Классика, Рок-н-ролл
 */
 
-const styles = ['Джаз', 'Блюз']; //Джаз, Блюз
-styles.push('Рок-н-ролл'); //Джаз, Блюз, Рок-н-ролл
-for(let i = 0; i<styles.length; i++){
-    let middle = Math.floor(styles.length/2);
-    console.log(middle);
-    if(i == middle) {
-        styles[i] = 'Классика'; //Джаз, Классика, Рок-н-ролл
+const styles = ['Джаз', 'Блюз']; // Джаз, Блюз
+styles.push('Рок-н-ролл'); // Джаз, Блюз, Рок-н-ролл
+for (let i = 0; i < styles.length; i++) {
+    let middle = Math.floor(styles.length / 2);
+    if (i == middle) {
+        styles[i] = 'Классика'; // Джаз, Классика, Рок-н-ролл
     }
 }
-const firstElementOfArray = styles.shift(); 
-styles.unshift('Рэп', 'Регги'); //Рэп, Регги, Классика, Рок-н-ролл
+const firstElementOfArray = styles.shift();
+styles.unshift('Рэп', 'Регги');
+// Рэп, Регги, Классика, Рок-н-ролл
+
+/*
+Напишите функцию sumInput(), которая:
+
+Просит пользователя ввести значения, используя prompt и сохраняет их в массив.
+Заканчивает запрашивать значения, когда пользователь введёт не числовое значение, пустую строку или нажмёт «Отмена».
+Подсчитывает и возвращает сумму элементов массива.
+P.S. Ноль 0 – считается числом, не останавливайте ввод значений при вводе «0».
+*/
+
+function sumInput() {
+    let arr = [];
+    let addingElement = prompt('Enter value:', '');
+    while (isFinite(addingElement)) {
+        if (addingElement == null || addingElement == '') {
+            return arr;
+        } else {
+            arr.push(addingElement);
+            addingElement = prompt('Enter value:', '');
+        }
+    }
+
+}
+
+console.log(sumInput());
