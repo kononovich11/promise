@@ -174,3 +174,44 @@ let masha = { name: "Маша", age: 28 };
 
 let users = [ vasya, petya, masha ];
 let names = users.map(item => item.name);
+
+/*
+Напишите функцию sortByAge(users), которая принимает массив объектов со свойством age и сортирует их по нему.
+
+Например:
+
+let vasya = { name: "Вася", age: 25 };
+let petya = { name: "Петя", age: 30 };
+let masha = { name: "Маша", age: 28 };
+
+let arr = [ vasya, petya, masha ];
+
+sortByAge(arr);
+
+ теперь: [vasya, masha, petya]
+alert(arr[0].name); // Вася
+alert(arr[1].name); // Маша
+alert(arr[2].name); // Петя
+*/
+
+function sortByAge(users) {
+    users.sort((a,b) => a.age-b.age);
+}
+
+sortByAge(users);
+
+/*
+Напишите функцию getAverageAge(users), которая принимает массив объектов со свойством age и возвращает средний возраст.
+
+Формула вычисления среднего арифметического значения: (age1 + age2 + ... + ageN) / N.
+*/
+
+function getAverageAge(users) {
+    let averageSum = 0;
+    users.map(item => {
+        averageSum += item.age;
+    });
+    return averageSum = (averageSum / users.length).toFixed(); 
+}
+
+let averageAge =getAverageAge(users);
