@@ -129,3 +129,27 @@ let arr2 = [5, 2, 1, -10, 8];
 arr2.sort(function(a,b){
     return b - a;
 });
+
+/*
+У нас есть массив строк arr. Нужно получить отсортированную копию, но оставить arr неизменённым.
+
+Создайте функцию copySorted(arr), которая будет возвращать такую копию.
+
+let arr = ["HTML", "JavaScript", "CSS"];
+
+let sorted = copySorted(arr);
+
+alert( sorted ); // CSS, HTML, JavaScript
+alert( arr ); // HTML, JavaScript, CSS (без изменений)
+*/
+
+let arr3 = ["HTML", "JavaScript", "CSS"];
+
+function copySorted(arr) {
+    let newArr = [];
+    arr.forEach((item,index) => {
+        newArr[index] = arr[index];
+    });
+    return newArr.sort();
+}
+let sorted = copySorted(arr3);
