@@ -65,7 +65,7 @@ function camelize(str) {
     return str.split('-').map((item, index) => index === 0 ? item : item[0].toUpperCase() + item.slice(1)).join('');
 }
 
-console.log(camelize('-webkit-transition'));
+//console.log(camelize('-webkit-transition'));
 
 /*
 Напишите функцию filterRange(arr, a, b), которая принимает массив arr, ищет в нём элементы между a и b и отдаёт массив этих элементов.
@@ -116,3 +116,16 @@ function filterRangeInPlace(arr, a, b) {
 let arr1 = [5, 3, 8, 1];
 let resValue = filterRangeInPlace(arr1, 1, 3);
 console.log(resValue);
+
+/*
+let arr = [5, 2, 1, -10, 8];
+
+ваш код для сортировки по убыванию
+
+alert( arr ); // 8, 5, 2, 1, -10
+*/
+let arr2 = [5, 2, 1, -10, 8];
+
+arr2.sort(function(a,b){
+    return b - a;
+});
