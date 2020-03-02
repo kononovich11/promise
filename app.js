@@ -215,3 +215,17 @@ function getAverageAge(users) {
 }
 
 let averageAge =getAverageAge(users);
+
+/*
+Создать функцию, которая принимает число n и возвращает массив, заполненный числами от 1 до n  
+*/
+
+function getArray(num) {
+    let arr = [];
+    for (let i = 1; i<=num; i++){
+     arr.push(i);
+    }
+    return arr;
+}
+
+let arrToN = getArray(10);
