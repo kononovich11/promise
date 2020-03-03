@@ -313,3 +313,19 @@ function filterUsers(arr, key, value) {
 }
 
 console.log(filterUsers(users1, "age", 36));
+
+/*
+На основе массива [1,2,3,5,8,9,10] сформировать новый массив,
+каждый элемент которого будет хранить информацию о числе и его четности:
+[{digit: 1, odd: true}, {digit: 2, odd: false}, {digit: 3, odd: true}...]
+*/
+
+const array = [1,2,3,5,8,9,10];
+const newInfoArr = array.map(element => {
+    return [
+        {
+            digit: element,
+            odd: element%2==0
+        }
+    ];
+});
