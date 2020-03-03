@@ -65,7 +65,7 @@ function camelize(str) {
     return str.split('-').map((item, index) => index === 0 ? item : item[0].toUpperCase() + item.slice(1)).join('');
 }
 
-//console.log(camelize('-webkit-transition'));
+// console.log(camelize('-webkit-transition'));
 
 /*
 Напишите функцию filterRange(arr, a, b), которая принимает массив arr, ищет в нём элементы между a и b и отдаёт массив этих элементов.
@@ -108,8 +108,8 @@ alert( arr ); // [3, 1]
 */
 
 function filterRangeInPlace(arr, a, b) {
-     arr.forEach((item, index) => {
-       (item>=a && item<=b)? arr: arr.splice(index,1);
+    arr.forEach((item, index) => {
+        (item >= a && item <= b) ? arr : arr.splice(index, 1);
     });
     return arr;
 }
@@ -124,9 +124,15 @@ let arr = [5, 2, 1, -10, 8];
 
 alert( arr ); // 8, 5, 2, 1, -10
 */
-let arr2 = [5, 2, 1, -10, 8];
+let arr2 = [
+    5,
+    2,
+    1,
+    -10,
+    8
+];
 
-arr2.sort(function(a,b){
+arr2.sort(function (a, b) {
     return b - a;
 });
 
@@ -147,7 +153,7 @@ let arr3 = ["HTML", "JavaScript", "CSS"];
 
 function copySorted(arr) {
     let newArr = [];
-    arr.forEach((item,index) => {
+    arr.forEach((item, index) => {
         newArr[index] = arr[index];
     });
     return newArr.sort();
@@ -168,11 +174,20 @@ let users = [ vasya, petya, masha ];
 alert( names ); // Вася, Петя, Маша
 */
 
-let vasya = { name: "Вася", age: 25 };
-let petya = { name: "Петя", age: 30 };
-let masha = { name: "Маша", age: 28 };
+let vasya = {
+    name: "Вася",
+    age: 25
+};
+let petya = {
+    name: "Петя",
+    age: 30
+};
+let masha = {
+    name: "Маша",
+    age: 28
+};
 
-let users = [ vasya, petya, masha ];
+let users = [vasya, petya, masha];
 let names = users.map(item => item.name);
 
 /*
@@ -195,7 +210,7 @@ alert(arr[2].name); // Петя
 */
 
 function sortByAge(users) {
-    users.sort((a,b) => a.age-b.age);
+    users.sort((a, b) => a.age - b.age);
 }
 
 sortByAge(users);
@@ -211,10 +226,10 @@ function getAverageAge(users) {
     users.map(item => {
         averageSum += item.age;
     });
-    return averageSum = (averageSum / users.length).toFixed(); 
+    return averageSum = (averageSum / users.length).toFixed();
 }
 
-let averageAge =getAverageAge(users);
+let averageAge = getAverageAge(users);
 
 /*
 Создать функцию, которая принимает число n и возвращает массив, заполненный числами от 1 до n  
@@ -222,10 +237,20 @@ let averageAge =getAverageAge(users);
 
 function getArray(num) {
     let arr = [];
-    for (let i = 1; i<=num; i++){
-     arr.push(i);
+    for (let i = 1; i <= num; i++) {
+        arr.push(i);
     }
     return arr;
 }
 
 let arrToN = getArray(10);
+
+/*
+Создать функцию,которая принимает массив, а возвращает новый массив с дублированными элементами
+*/
+function doubleArray(arr) {
+    let newArr = [];
+    newArr = newArr.concat(arr, arr);
+    return newArr;
+}
+let doubleArr = doubleArray([1, 2, 3]);
