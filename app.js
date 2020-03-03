@@ -254,3 +254,17 @@ function doubleArray(arr) {
     return newArr;
 }
 let doubleArr = doubleArray([1, 2, 3]);
+
+/* 
+Создать функцию,которая принимает произвольное число массивов и удаляет из каждого массива первый элемент, а возвращает массив из оставшихся значений
+*/
+function changeCollection() {
+    let generalArr = [];
+    for(let i = 0; i< arguments.length; i++){
+       arguments[i].shift();
+       generalArr[i] = arguments[i]; 
+    }
+   return generalArr;
+}
+
+console.log(changeCollection([1,2,3],['a','b','c']));
