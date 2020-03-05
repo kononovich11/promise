@@ -63,3 +63,10 @@ function sumTo(n) {
     return res;
 }
 let averegeSum = sumTo(4);
+
+// Задача – написать функцию factorial(n), которая возвращает n!, используя рекурсию.
+function factorial(n) {
+    let res = n == 1 ? n : n * factorial(n - 1);
+    return res;
+}
+let factorialNum = factorial(5);
