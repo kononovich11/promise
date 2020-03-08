@@ -23,9 +23,9 @@ function Calculator() {
 }
 
 let calculator = new Calculator();
-calculator.read();
-console.log("Sum=" + calculator.sum());
-console.log("Mul=" + calculator.mul());
+// calculator.read();
+// console.log("Sum=" + calculator.sum());
+// console.log("Mul=" + calculator.mul());
 
 /*Напишите функцию-конструктор Accumulator(startingValue).
 
@@ -52,9 +52,9 @@ function Accumulator(startingValue) {
 }
 
 let accumulator = new Accumulator(1);
-accumulator.read();
-accumulator.read()
-console.log(accumulator.value);
+// accumulator.read();
+// accumulator.read()
+// console.log(accumulator.value);
 
 // Напишите функцию sumTo(n), которая вычисляет сумму чисел 1 + 2 + ... + n.
 
@@ -70,3 +70,13 @@ function factorial(n) {
     return res;
 }
 let factorNum = factorial(5);
+
+// Напишите функцию sum, которая работает таким образом: sum(a)(b) = a+b.
+
+function sum(a) {
+    return function (b) {
+        return a + b;
+    }
+}
+let resSum = sum(5)(-3);
+console.log(resSum);
