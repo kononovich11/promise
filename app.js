@@ -106,3 +106,16 @@ function inArray(arr) {
 
 let resInBetween = arrForFilter.filter(inBetween(3,6));
 let resInArray = arrForFilter.filter(inArray([1,2,3]));
+
+//Сортировка по полю
+let users = [
+    { name: "John", age: 20, surname: "Johnson" },
+    { name: "Pete", age: 18, surname: "Peterson" },
+    { name: "Ann", age: 19, surname: "Hathaway" }
+  ];
+
+function byField(name){
+    return (prev, next) => prev[name] > next[name] ? 1: -1;
+}
+
+let sortName = users.sort(byField('name'));
