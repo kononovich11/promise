@@ -94,28 +94,46 @@ arr.filter(inBetween(3,6)) – выбирает только значения м
 arr.filter(inArray([1,2,3])) – выбирает только элементы, совпадающие с одним из элементов массива
 */
 
-let arrForFilter = [1, 2, 3, 4, 5, 6, 7];
+let arrForFilter = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+];
 
 function inBetween(a, b) {
-    return item => item>=a && item<=b;   
+    return item => item >= a && item <= b;
 }
 
 function inArray(arr) {
-  return item => arr.includes(item);
+    return item => arr.includes(item);
 }
 
-let resInBetween = arrForFilter.filter(inBetween(3,6));
-let resInArray = arrForFilter.filter(inArray([1,2,3]));
+let resInBetween = arrForFilter.filter(inBetween(3, 6));
+let resInArray = arrForFilter.filter(inArray([1, 2, 3]));
 
-//Сортировка по полю
+// Сортировка по полю
 let users = [
-    { name: "John", age: 20, surname: "Johnson" },
-    { name: "Pete", age: 18, surname: "Peterson" },
-    { name: "Ann", age: 19, surname: "Hathaway" }
-  ];
+    {
+        name: "John",
+        age: 20,
+        surname: "Johnson"
+    }, {
+        name: "Pete",
+        age: 18,
+        surname: "Peterson"
+    }, {
+        name: "Ann",
+        age: 19,
+        surname: "Hathaway"
+    }
+];
 
-function byField(name){
-    return (prev, next) => prev[name] > next[name] ? 1: -1;
+function byField(name) {
+    return(prev, next) => prev[name] > next[name] ? 1 : -1;
 }
 
 let sortName = users.sort(byField('name'));
@@ -127,9 +145,9 @@ let sortName = users.sort(byField('name'));
 Используя рекурсивный setTimeout */
 
 function printNumbers(from, to) {
-    for(let i = from; i<= to; i++) {
-       alert(i);
-        if(i == to) {
+    for (let i = from; i <= to; i++) {
+        alert(i);
+        if (i == to) {
             clearInterval(idInter);
         }
     }
@@ -139,29 +157,29 @@ function printNumbersSetTimeout(from, to) {
     let count = from;
     alert(count);
     count++;
-    count == to? clearInterval(idTimeout) : printNumbersSetTimeout(count, to);
+    count == to ? clearInterval(idTimeout) : printNumbersSetTimeout(count, to);
 }
 
-//let idInter = setInterval(printNumbers, 1000, 2, 9);
-//let idTimeout = setTimeout(printNumbersSetTimeout, 1000, 2, 9);
+// let idInter = setInterval(printNumbers, 1000, 2, 9);
+// let idTimeout = setTimeout(printNumbersSetTimeout, 1000, 2, 9);
 
 const arr = ['den', 'lina', 'nina'];
 
 let newArr = [];
-for (let i = 0; i<arr.length; i++) {
+for (let i = 0; i < arr.length; i++) {
     newArr[i] = arr[i].length;
 }
-//console.log(newArr);
+// console.log(newArr);
 
 let newArr2 = [];
-for (let i = 0; i<arr.length; i++) {
+for (let i = 0; i < arr.length; i++) {
     newArr2[i] = arr[i].toUpperCase();
 }
-//console.log(newArr2); 
+// console.log(newArr2);
 
 function mapArray(arr, fn) {
     const res = [];
-    for (let i = 0; i<arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
         res.push(fn(arr[i]));
     }
     return res;
@@ -179,7 +197,7 @@ const res1 = mapArray(arr, nameLength);
 const res2 = mapArray(arr, nameUpperCase);
 
 function greeting(firstName) {
-    return function(lastName) {
+    return function (lastName) {
         return `Hi,${firstName} ${lastName}`;
     }
 }
@@ -189,12 +207,61 @@ const testGreeting = greeting('Galina')('Kononovich');
 function question(job) {
     const jobDictionary = {
         developer: 'what is JS?',
-        teacher: ' what subject?',
+        teacher: ' what subject?'
     }
-    
+
     return function (name) {
-        return `${name}, ${jobDictionary[job]}?`
+        return `${name}, ${
+            jobDictionary[job]
+        }?`
     };
 }
 
 const developerQuestion = question('developer')('Nina');
+
+/*
+Создать две функции и дать им осмысленные названия:
+- первая функция принимает массив и колбэк (одна для всех вызовов)
+- вторая функция (колбэк) обрабатывает каждый элемент массива (для каждого вызова свой callback)
+
+Первая функция возвращает строку “New value: ” и результат обработки:
+
+firstFunc([‘my’, ‘name’, ‘is’, ‘Trinity’], handler1) → “New value: MyNameIsTrinity”
+firstFunc([10, 20, 30], handler2) → “New value: 100, 200, 300,”
+firstFunc([{age: 45, name: ‘Jhon’}, {age: 20, name: ‘Aaron’}], handler3) →
+“New value: Jhon is 45, Aaron is 20,”
+firstFunc([‘abc’, ‘123’], handler4) → “New value: cba, 321,” // строки инвертируются
+
+
+Подсказка: secondFunc должна быть представлена функцией, которая принимает
+один аргумент (каждый элемент массива) и возвращает результат его обработки
+*/
+
+function getResultOfHandler(arr, fn) {
+    let str = 'New value:';
+    for (let i = 0; i < arr.length; i++) {
+        str += fn(arr[i]);
+    }
+    return str;
+}
+
+function handler1(el) {
+    return el[0].toUpperCase() + el.slice(1);
+}
+
+function handler2(el) {
+    return `${el * 10},`;
+}
+
+function handler3(el) {
+    return `${el['name']} is ${el['age']},`;
+}
+
+function handler4(el) {
+    return el.split('').reverse().join('') + ',';
+}
+
+const result1 = getResultOfHandler([ 'my', 'name', 'is', 'Trinity'], handler1);
+const result2 = getResultOfHandler([10, 20, 30], handler2);
+const result3 = getResultOfHandler([{age: 45, name: 'Jhon'}, {age: 20, name: 'Aaron'}], handler3);
+const result4 = getResultOfHandler(['abc', '123'], handler4);
