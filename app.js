@@ -142,5 +142,5 @@ function printNumbersSetTimeout(from, to) {
     count == to? clearInterval(idTimeout) : printNumbersSetTimeout(count, to);
 }
 
-let idInter = setInterval(printNumbers, 1000, 2, 9);
-let idTimeout = setTimeout(printNumbersSetTimeout, 1000, 2, 9);
+//let idInter = setInterval(printNumbers, 1000, 2, 9);
+//let idTimeout = setTimeout(printNumbersSetTimeout, 1000, 2, 9);
