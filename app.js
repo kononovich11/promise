@@ -144,3 +144,57 @@ function printNumbersSetTimeout(from, to) {
 
 //let idInter = setInterval(printNumbers, 1000, 2, 9);
 //let idTimeout = setTimeout(printNumbersSetTimeout, 1000, 2, 9);
+
+const arr = ['den', 'lina', 'nina'];
+
+let newArr = [];
+for (let i = 0; i<arr.length; i++) {
+    newArr[i] = arr[i].length;
+}
+//console.log(newArr);
+
+let newArr2 = [];
+for (let i = 0; i<arr.length; i++) {
+    newArr2[i] = arr[i].toUpperCase();
+}
+//console.log(newArr2); 
+
+function mapArray(arr, fn) {
+    const res = [];
+    for (let i = 0; i<arr.length; i++) {
+        res.push(fn(arr[i]));
+    }
+    return res;
+}
+
+function nameLength(el) {
+    return el.length;
+}
+
+function nameUpperCase(el) {
+    return el.toUpperCase();
+}
+
+const res1 = mapArray(arr, nameLength);
+const res2 = mapArray(arr, nameUpperCase);
+
+function greeting(firstName) {
+    return function(lastName) {
+        return `Hi,${firstName} ${lastName}`;
+    }
+}
+
+const testGreeting = greeting('Galina')('Kononovich');
+
+function question(job) {
+    const jobDictionary = {
+        developer: 'what is JS?',
+        teacher: ' what subject?',
+    }
+    
+    return function (name) {
+        return `${name}, ${jobDictionary[job]}?`
+    };
+}
+
+const developerQuestion = question('developer')('Nina');
