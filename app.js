@@ -265,3 +265,25 @@ const result1 = getResultOfHandler([ 'my', 'name', 'is', 'Trinity'], handler1);
 const result2 = getResultOfHandler([10, 20, 30], handler2);
 const result3 = getResultOfHandler([{age: 45, name: 'Jhon'}, {age: 20, name: 'Aaron'}], handler3);
 const result4 = getResultOfHandler(['abc', '123'], handler4);
+
+/*
+Написать аналог метода every. Создайте функцию every, она должна принимать первым аргументом массив чисел (обязательно проверьте что передан массив) вторым аргументом callback (обязательно проверьте что передана функция)
+функция должна возвращать true или false в зависимости от результата вызова callback (проверить число больше 5). Callback  должен принимать один элемент массива, его индекс в массиве и весь массив. 
+*/
+
+function every(arr, fn) {
+    if(arr.push && typeof(fn) == 'function') {
+        for(let i = 0; i<arr.length; i++) {
+            if(!fn(arr[i], i, arr)){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+function checkMore5(el, index, arr) {
+    return el>5? true: false;
+}
+
+const getResMore5 = every([10,16,9], checkMore5);
