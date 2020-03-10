@@ -119,3 +119,28 @@ function byField(name){
 }
 
 let sortName = users.sort(byField('name'));
+/*Напишите функцию printNumbers(from, to), которая выводит число каждую секунду, начиная от from и заканчивая to.
+
+Сделайте два варианта решения.
+
+Используя setInterval.
+Используя рекурсивный setTimeout */
+
+function printNumbers(from, to) {
+    for(let i = from; i<= to; i++) {
+       alert(i);
+        if(i == to) {
+            clearInterval(idInter);
+        }
+    }
+}
+
+function printNumbersSetTimeout(from, to) {
+    let count = from;
+    alert(count);
+    count++;
+    count == to? clearInterval(idTimeout) : printNumbersSetTimeout(count, to);
+}
+
+let idInter = setInterval(printNumbers, 1000, 2, 9);
+let idTimeout = setTimeout(printNumbersSetTimeout, 1000, 2, 9);
