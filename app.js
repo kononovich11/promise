@@ -250,21 +250,41 @@ function handler1(el) {
 }
 
 function handler2(el) {
-    return `${el * 10},`;
+    return `${
+        el * 10
+    },`;
 }
 
 function handler3(el) {
-    return `${el['name']} is ${el['age']},`;
+    return `${
+        el['name']
+    } is ${
+        el['age']
+    },`;
 }
 
 function handler4(el) {
     return el.split('').reverse().join('') + ',';
 }
 
-const result1 = getResultOfHandler([ 'my', 'name', 'is', 'Trinity'], handler1);
-const result2 = getResultOfHandler([10, 20, 30], handler2);
-const result3 = getResultOfHandler([{age: 45, name: 'Jhon'}, {age: 20, name: 'Aaron'}], handler3);
-const result4 = getResultOfHandler(['abc', '123'], handler4);
+const result1 = getResultOfHandler([
+    'my', 'name', 'is', 'Trinity'
+], handler1);
+const result2 = getResultOfHandler([
+    10, 20, 30
+], handler2);
+const result3 = getResultOfHandler([
+    {
+        age: 45,
+        name: 'Jhon'
+    }, {
+        age: 20,
+        name: 'Aaron'
+    }
+], handler3);
+const result4 = getResultOfHandler([
+    'abc', '123'
+], handler4);
 
 /*
 Написать аналог метода every. Создайте функцию every, она должна принимать первым аргументом массив чисел (обязательно проверьте что передан массив) вторым аргументом callback (обязательно проверьте что передана функция)
@@ -272,9 +292,9 @@ const result4 = getResultOfHandler(['abc', '123'], handler4);
 */
 
 function every(arr, fn) {
-    if(arr.push && typeof(fn) == 'function') {
-        for(let i = 0; i<arr.length; i++) {
-            if(!fn(arr[i], i, arr)){
+    if (arr.push && typeof(fn) == 'function') {
+        for (let i = 0; i < arr.length; i++) {
+            if (! fn(arr[i], i, arr)) {
                 return false;
             }
         }
@@ -283,7 +303,70 @@ function every(arr, fn) {
 }
 
 function checkMore5(el, index, arr) {
-    return el>5? true: false;
+    return el > 5 ? true : false;
 }
 
-const getResMore5 = every([10,16,9], checkMore5);
+const getResMore5 = every([
+    10, 16, 9
+], checkMore5);
+
+/*function getThis() {
+    console.log(this);
+}
+
+getThis();*/
+function getPrice(currency = '$') {
+    console.log(currency + this.price);
+    return this;
+}
+function getName() {
+    console.log(this.name);
+    return this;
+}
+
+const prod1 = {
+    name: 'intel',
+    price: 100,
+    getPrice,
+    getName,
+    info: {
+        information: ['2ghz'],
+        getInfo: function () {
+            console.log(this);
+        }
+    }
+};
+
+// prod1.getPrice();
+// prod1.info.getInfo();
+// prod1.getName();
+
+const prod2 = {
+    name: 'AMD',
+    price: 50,
+    getPrice
+};
+
+// prod2.getPrice();
+
+// prod2.getName = prod1.getName;
+// prod2.getName();
+
+const str = 'This will reverse str';
+const reverseStr = str.split('').reverse().join('');
+
+const prod3 = {
+    name: 'ARM',
+    price: 200,
+    getPrice,
+    // getName,
+};
+
+//getPrice.call(prod3);
+//getPrice.apply(prod3, ['*']);
+// prod3.getName().getPrice();
+
+const getPriceBind = prod3.getPrice.bind(prod3);
+console.log(getPriceBind);
+
+setTimeout(getPriceBind , 1000);
