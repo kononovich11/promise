@@ -367,6 +367,21 @@ const prod3 = {
 // prod3.getName().getPrice();
 
 const getPriceBind = prod3.getPrice.bind(prod3);
-console.log(getPriceBind);
+//console.log(getPriceBind);
 
 setTimeout(getPriceBind , 1000);
+
+/*Создать объект, который описывает ширину и высоту
+
+прямоугольника, а также может посчитать площадь фигуры:
+
+const rectangle = {width:..., height:..., getSquare:...}; */
+
+const rectangle = {
+    width: 300,
+    height: 500,
+    getSquare() {
+        return this.width * this.height;
+    },
+};
+const square = rectangle.getSquare();
