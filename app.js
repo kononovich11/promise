@@ -453,17 +453,17 @@ const numerator = {
         return this;
     },
     plusOne() {
-        ++this.value;
+        ++ this.value;
         return this;
     },
     minusOne() {
-        --this.value;
+        -- this.value;
         return this;
     }
 };
 
 numerator.double().plusOne().plusOne().minusOne();
-//console.log(numerator.value);
+// console.log(numerator.value);
 
 /*Создать объект с розничной ценой и количеством продуктов.
 
@@ -474,9 +474,9 @@ const products = {
     amount: 6,
     getAllPrice() {
         return this.price * this.amount;
-    },
+    }
 };
-//console.log(products.getAllPrice());
+// console.log(products.getAllPrice());
 
 /*Создать объект из предыдущей задачи. Создать второй объект, который описывает количество деталей и цену за одну деталь. Для второго объекта нужно узнать общую стоимость всех деталей, но нельзя создавать новые функции и методы.
 
@@ -484,7 +484,26 @@ const products = {
 
 const details = {
     amount: 11,
-    price: 50,
+    price: 50
 };
 
 const detailsAllPrice = products.getAllPrice.call(details);
+
+/*Даны объект и функция:
+
+let sizes = {width: 5, height: 10},
+
+getSquare = function () {return this.width * this.height};
+
+Не изменяя функцию или объект, получить результат функции getSquare для объекта sizes*/
+
+let sizes = {
+        width: 5,
+        height: 10
+    },
+
+    getSquare = function () {
+        return this.width * this.height
+    };
+
+    const resGetSquare = getSquare.call(sizes);
