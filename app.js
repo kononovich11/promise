@@ -464,3 +464,16 @@ const numerator = {
 
 numerator.double().plusOne().plusOne().minusOne();
 //console.log(numerator.value);
+
+/*Создать объект с розничной ценой и количеством продуктов.
+
+Этот объект должен содержать метод для получения общей стоимости всех товаров (цена * количество продуктов)*/
+
+const products = {
+    price: 25,
+    amountOfProducts: 6,
+    getAllPrice() {
+        return this.price * this.amountOfProducts;
+    },
+};
+//console.log(products.getAllPrice());
