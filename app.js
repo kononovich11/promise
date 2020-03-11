@@ -409,8 +409,8 @@ const price = {
         return this.price;
     },
     getPriceWithDiscount() {
-        return this.price - (parseInt(this.discount) * this.price) /100;
-    },
+        return this.price -(parseInt(this.discount) * this.price) / 100;
+    }
 };
 
 const priceWithDiscount = price.getPriceWithDiscount();
@@ -429,9 +429,38 @@ object.height; // 11;
 
 const objectHeight = {
     plusOne() {
-        return ++this.height;
-    }, 
+        return ++ this.height;
+    }
 };
 
 objectHeight.height = 10;
-cobjectHeight.plusOne();
+objectHeight.plusOne();
+
+/*Создать объект “вычислитель”, у которого есть числовое свойство
+
+“значение” и методы “удвоить”, “прибавить один”, “отнять один”.
+
+Методы можно вызывать через точку, образуя цепочку методов:
+
+numerator.double().plusOne().plusOne().minusOne();
+
+numerator.value // 3 */
+
+const numerator = {
+    value: 1,
+    double() {
+        this.value *= 2;
+        return this;
+    },
+    plusOne() {
+        ++this.value;
+        return this;
+    },
+    minusOne() {
+        --this.value;
+        return this;
+    }
+};
+
+numerator.double().plusOne().plusOne().minusOne();
+//console.log(numerator.value);
