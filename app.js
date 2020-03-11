@@ -506,4 +506,19 @@ let sizes = {
         return this.width * this.height
     };
 
-    const resGetSquare = getSquare.call(sizes);
+const resGetSquare = getSquare.call(sizes);
+
+/*
+Измените функцию getElementHeight таким образом, чтобы можно было вызвать getElementHeight() и получить 25.*/
+let element = {
+
+    height: 25,
+
+    getHeight: function () {
+        return this.height;
+    }
+
+};
+let getElementHeight = element.getHeight.bind(element);
+
+getElementHeight();
