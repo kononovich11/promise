@@ -471,9 +471,20 @@ numerator.double().plusOne().plusOne().minusOne();
 
 const products = {
     price: 25,
-    amountOfProducts: 6,
+    amount: 6,
     getAllPrice() {
-        return this.price * this.amountOfProducts;
+        return this.price * this.amount;
     },
 };
 //console.log(products.getAllPrice());
+
+/*Создать объект из предыдущей задачи. Создать второй объект, который описывает количество деталей и цену за одну деталь. Для второго объекта нужно узнать общую стоимость всех деталей, но нельзя создавать новые функции и методы.
+
+Для этого “позаимствуйте” метод из предыдущего объекта.*/
+
+const details = {
+    amount: 11,
+    price: 50,
+};
+
+const detailsAllPrice = products.getAllPrice.call(details);
