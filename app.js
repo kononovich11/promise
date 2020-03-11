@@ -414,3 +414,24 @@ const price = {
 };
 
 const priceWithDiscount = price.getPriceWithDiscount();
+
+/*
+Создать объект, у которого будет поле высота и метод “увеличить
+
+высоту на один”. Метод должен возвращать новую высоту:
+
+object.height = 10;
+
+object.inc(); // придумать свое название для метода
+
+object.height; // 11;
+*/
+
+const objectHeight = {
+    plusOne() {
+        return ++this.height;
+    }, 
+};
+
+objectHeight.height = 10;
+cobjectHeight.plusOne();
