@@ -362,14 +362,14 @@ const prod3 = {
     // getName,
 };
 
-//getPrice.call(prod3);
-//getPrice.apply(prod3, ['*']);
+// getPrice.call(prod3);
+// getPrice.apply(prod3, ['*']);
 // prod3.getName().getPrice();
 
 const getPriceBind = prod3.getPrice.bind(prod3);
-//console.log(getPriceBind);
+// console.log(getPriceBind);
 
-setTimeout(getPriceBind , 1000);
+setTimeout(getPriceBind, 1000);
 
 /*Создать объект, который описывает ширину и высоту
 
@@ -382,6 +382,35 @@ const rectangle = {
     height: 500,
     getSquare() {
         return this.width * this.height;
-    },
+    }
 };
 const square = rectangle.getSquare();
+
+/*Создать объект, у которого будет цена товара и его скидка, а также
+
+два метода: для получения цены и для расчета цены с учетом скидки:
+
+const price = {
+
+price: 10,
+
+discount: '15%',
+
+... };
+
+price.getPrice(); // 10
+
+price.getPriceWithDiscount(); // 8.5*/
+
+const price = {
+    price: 10,
+    discount: '15%',
+    getPrice() {
+        return this.price;
+    },
+    getPriceWithDiscount() {
+        return this.price - (parseInt(this.discount) * this.price) /100;
+    },
+};
+
+const priceWithDiscount = price.getPriceWithDiscount();
