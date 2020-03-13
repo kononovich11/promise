@@ -522,3 +522,25 @@ let element = {
 let getElementHeight = element.getHeight.bind(element);
 
 getElementHeight();
+
+const obj = {
+    firstName: 'Den',
+    age: 30,
+    getFirstName() {
+        console.log(this);
+    },
+    getAgeArrow: null,
+    getAge() {
+        setTimeout(() => console.log(this));
+    }
+};
+
+/*Переделать функцию с использованием функции-стрелки (в методе reduce тоже использовать arrow function):
+*/
+
+const sumFunction = (...restParams) => {
+    const returnParams = restParams.length? restParams.reduce((prev,next) => prev + next) : 0;
+    return returnParams;
+};
+sumFunction(1, 2, 3, 4); // 10
+sumFunction(); // 0
