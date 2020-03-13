@@ -121,3 +121,8 @@ const numbersObj = numbers.map(item => ({
 
 const arrNum = [12, 4, 50, 1, 0, 18, 40];
 const check0 = arrNum.some(item => item == 0);
+
+//Проверить, все элементы массива имеют длину более 3х символов ['yes', 'hello', 'no', 'easycode', 'what']. Если да - вернуть true
+
+const arrStrings = ['yes', 'hello', 'no', 'easycode', 'what'];
+const itemLengthMore3 = arrStrings.every(item => item.length > 3);
