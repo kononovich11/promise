@@ -115,4 +115,9 @@ const numbers = [1,2,3,5,8,9,10];
 const numbersObj = numbers.map(item => ({
     digit: item,
     odd: item %2  == 0,
-}), {});
+}), {}); 
+
+//Проверить, содержит ли массив [12, 4, 50, 1, 0, 18, 40] элементы, равные нулю. Если да - вернуть true.
+
+const arrNum = [12, 4, 50, 1, 0, 18, 40];
+const check0 = arrNum.some(item => item == 0);
