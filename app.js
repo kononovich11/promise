@@ -104,3 +104,15 @@ const needFind = users.find(item => item.name == 'Valencia Carrillo');
 
 //sort
 const sortAge = users.sort((prev, next) => prev.age - next.age);
+
+/*На основе массива [1,2,3,5,8,9,10] сформировать новый массив,
+
+каждый элемент которого будет хранить информацию о числе и его четности:
+
+[{digit: 1, odd: true}, {digit: 2, odd: false}, {digit: 3, odd: true}...]*/
+
+const numbers = [1,2,3,5,8,9,10];
+const numbersObj = numbers.map(item => ({
+    digit: item,
+    odd: item %2  == 0,
+}), {});
