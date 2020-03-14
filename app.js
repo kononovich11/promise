@@ -68,3 +68,27 @@ function minus(a = 0) {
 }
 
 const resM = minus(0)(-6);
+
+/*Реализовать функцию, которая умножает и умеет запоминать возвращаемый результат между вызовами:
+
+function multiplyMaker ...
+
+const multiply = multiplyMaker(2);
+
+multiply(2); // 4 (2 * 2)
+
+multiply(1); // 4 (4 * 1)
+
+multiply(3); // 12 (4 * 3)
+
+multiply(10); // 120 (12 * 10)*/
+
+function multiplyMaker(x = 0) {
+    let value = x; 
+    return function(num = 0) {
+       return value *= num;
+    };
+}
+
+const multiply = multiplyMaker(2);
+
