@@ -218,7 +218,61 @@ function createPhrase(arr) {
 }
 const allPhrase = createPhrase(objsOfSymbols);
 
-//Отсортируйте массив массивов так, чтобы вначале располагались наименьшие массивы (размер массива определяется его длиной): [ [14, 45], [1], ['a', 'c', 'd'] ] → [ [1], [14, 45], ['a', 'c', 'd'] ]
+// Отсортируйте массив массивов так, чтобы вначале располагались наименьшие массивы (размер массива определяется его длиной): [ [14, 45], [1], ['a', 'c', 'd'] ] → [ [1], [14, 45], ['a', 'c', 'd'] ]
 
-const arrayOfArrays = [ [14, 45], [1], ['a', 'c', 'd'] ];
+const arrayOfArrays = [
+    [
+        14, 45
+    ],
+    [1],
+    [
+        'a', 'c', 'd'
+    ]
+];
 arrayOfArrays.sort((prev, next) => prev.length - next.length);
+
+// Есть массив объектов: Отсортировать их по возрастающему количеству ядер (cores).
+
+const arrOfObjects = [
+
+    {
+        cpu: 'intel',
+        info: {
+            cores: 2,
+            сache: 3
+        }
+    },
+
+    {
+        cpu: 'intel',
+        info: {
+            cores: 4,
+            сache: 4
+        }
+    },
+
+    {
+        cpu: 'amd',
+        info: {
+            cores: 1,
+            сache: 1
+        }
+    },
+
+    {
+        cpu: 'intel',
+        info: {
+            cores: 3,
+            сache: 2
+        }
+    }, {
+        cpu: 'amd',
+        info: {
+            cores: 4,
+            сache: 2
+        }
+    }
+
+];
+
+arrOfObjects.sort((prev, next) => prev.info.cores - next.info.cores);
