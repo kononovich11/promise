@@ -83,26 +83,28 @@ const users = [
 // filter
 const userMore25 = users.filter(item => item.age > 25);
 
-//map 
+// map
 const usersName = users.map(item => item.name);
 
-//reduce
-const totalBalance = users.reduce((acc, item) => {acc += item.balance;}, 0);
+// reduce
+const totalBalance = users.reduce((acc, item) => {
+    acc += item.balance;
+}, 0);
 
 const userObj = users.reduce((acc, item) => {
     acc[item._id] = item;
     return acc;
 }, {});
 
-//some/every
+// some/every
 
 const isMale = users.some(item => item.gender == 'male');
 const isEveryMale = users.every(item => item.gender == 'male');
 
-//find
+// find
 const needFind = users.find(item => item.name == 'Valencia Carrillo');
 
-//sort
+// sort
 const sortAge = users.sort((prev, next) => prev.age - next.age);
 
 /*На основе массива [1,2,3,5,8,9,10] сформировать новый массив,
@@ -111,18 +113,107 @@ const sortAge = users.sort((prev, next) => prev.age - next.age);
 
 [{digit: 1, odd: true}, {digit: 2, odd: false}, {digit: 3, odd: true}...]*/
 
-const numbers = [1,2,3,5,8,9,10];
+const numbers = [
+    1,
+    2,
+    3,
+    5,
+    8,
+    9,
+    10
+];
 const numbersObj = numbers.map(item => ({
     digit: item,
-    odd: item %2  == 0,
-}), {}); 
+    odd: item % 2 == 0
+}), {});
 
-//Проверить, содержит ли массив [12, 4, 50, 1, 0, 18, 40] элементы, равные нулю. Если да - вернуть true.
+// Проверить, содержит ли массив [12, 4, 50, 1, 0, 18, 40] элементы, равные нулю. Если да - вернуть true.
 
-const arrNum = [12, 4, 50, 1, 0, 18, 40];
+const arrNum = [
+    12,
+    4,
+    50,
+    1,
+    0,
+    18,
+    40
+];
 const check0 = arrNum.some(item => item == 0);
 
-//Проверить, все элементы массива имеют длину более 3х символов ['yes', 'hello', 'no', 'easycode', 'what']. Если да - вернуть true
+// Проверить, все элементы массива имеют длину более 3х символов ['yes', 'hello', 'no', 'easycode', 'what']. Если да - вернуть true
 
-const arrStrings = ['yes', 'hello', 'no', 'easycode', 'what'];
+const arrStrings = [
+    'yes',
+    'hello',
+    'no',
+    'easycode',
+    'what'
+];
 const itemLengthMore3 = arrStrings.every(item => item.length > 3);
+
+/*Дан массив объектов, где каждый объект содержит информацию о букве и месте её положения в строке {буква: “a”, позиция_в_предложении: 1}:
+
+Напишите функцию, которая из элементов массива соберет и вернёт
+
+строку, основываясь на index каждой буквы.*/
+
+const objsOfSymbols = [
+    {
+        char: "a",
+        index: 12
+    },
+    {
+        char: "w",
+        index: 8
+    },
+    {
+        char: "Y",
+        index: 10
+    },
+    {
+        char: "p",
+        index: 3
+    }, {
+        char: "p",
+        index: 2
+    }, {
+        char: "N",
+        index: 6
+    }, {
+        char: " ",
+        index: 5
+    }, {
+        char: "y",
+        index: 4
+    }, {
+        char: "r",
+        index: 13
+    }, {
+        char: "H",
+        index: 0
+    }, {
+        char: "e",
+        index: 11
+    }, {
+        char: "a",
+        index: 1
+    }, {
+        char: " ",
+        index: 9
+    }, {
+        char: "!",
+        index: 14
+    }, {
+        char: "e",
+        index: 7
+    }
+];
+
+function createPhrase(arr) {
+    const sortObjectsSymbols = arr.sort((prev, next) => prev.index - next.index).reduce((acc, item) => {
+        acc += item.char;
+        return acc;
+    }, '');
+    return sortObjectsSymbols;
+}
+const allPhrase = createPhrase(objsOfSymbols);
