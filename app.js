@@ -62,7 +62,7 @@ minus()(); // 0
 Подсказка, функция minus должна возвращать другую функцию.*/
 
 function minus(a = 0) {
-    return function(b = 0) {
+    return function (b = 0) {
         return a - b;
     };
 }
@@ -84,11 +84,54 @@ multiply(3); // 12 (4 * 3)
 multiply(10); // 120 (12 * 10)*/
 
 function multiplyMaker(x = 0) {
-    let value = x; 
-    return function(num = 0) {
-       return value *= num;
+    let value = x;
+    return function (num = 0) {
+        return value *= num;
     };
 }
 
 const multiply = multiplyMaker(2);
 
+/*Реализовать модуль, который работает со строкой и имеет методы:
+
+a. установить строку
+
+i. если передано пустое значение, то установить пустую строку
+
+ii. если передано число, число привести к строке
+
+b. получить строку
+
+c. получить длину строки
+
+d. получить строку-перевертыш
+
+Пример:
+
+модуль.установитьСтроку(‘abcde’);
+
+модуль.получитьСтроку(); // ‘abcde’
+
+модуль.получитьДлину(); // 5 */
+
+const module = (function () {
+    let str = '';
+
+    function setStr(value = '') {
+        return str = value.toString();
+    }
+
+    function getLengthStr() {
+        return str.length;
+    }
+
+    function getReverseStr() {
+       return str.split('').reverse('').join('');
+    }
+
+    return {
+        setStr,
+        getLengthStr,
+        getReverseStr
+    };
+})();
