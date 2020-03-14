@@ -11,3 +11,37 @@ function getObject(first, ...other) {
 }
 
 const resault = getObject('a', 'b', 'c', 'd');
+
+/*
+Организовать функцию getInfo, которая принимает объект вида
+{ name: ..., info: { employees: [...], partners: [ … ] } }
+и выводит в консоль имя (если имени нет, показывать ‘Unknown’) и первые две компании из массива partners:
+
+getInfo(organisation); →
+
+Name: Google
+
+Partners: Microsoft Facebook
+*/
+
+const organisation = {  
+    name: 'Google',   
+    info: { 
+      employees: ['Vlad', 'Olga'], 
+      partners: ['Microsoft', 'Facebook', 'Xing']   
+    } 
+  };
+   
+  function getInfo({
+      name = 'Unknown',
+      info: {
+        partners : [p1, p2] 
+      },
+     } = {}) 
+      {
+        console.log(`Name: ${name}, Partners: ${p1}, ${p2}`);
+      }
+      
+  getInfo(organisation);
+
+
