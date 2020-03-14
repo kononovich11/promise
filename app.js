@@ -126,12 +126,61 @@ const module = (function () {
     }
 
     function getReverseStr() {
-       return str.split('').reverse('').join('');
+        return str.split('').reverse('').join('');
+    }
+
+    return {setStr, getLengthStr, getReverseStr};
+})();
+
+/*Создайте модуль “калькулятор”, который умеет складывать, умножать, вычитать, делить и возводить в степень. Конечное значение округлить до двух знаков после точки (значение должно храниться в обычной переменной, не в this).
+
+модуль.установитьЗначение(10); // значение = 10
+модуль.прибавить(5); // значение += 5
+модуль.умножить(2); // значение *= 2
+модуль.узнатьЗначение(); // вывести в консоль 30 (здесь надо округлить)
+Также можно вызывать методы цепочкой:
+модуль.установитьЗначение(10).вСтепень(2).узнатьЗначение(); // 100 */
+
+const calculator = (function () {
+    let value;
+
+    function setValue(x) {
+        value = x;
+        return this;
+    }
+
+    function plus(addValue) {
+        value += addValue;
+        return this;
+    }
+
+    function multiply(multiplyValue) {
+        value *= multiplyValue;
+        return this;
+    }
+
+    function minus (minusValue) {
+        value -= minusValue;
+        return this;
+    }
+
+    function pow (powValue) {
+        value = value ** powValue;
+        return this;
+    }
+    function getValue() {
+         return value = +value.toFixed();
+         
     }
 
     return {
-        setStr,
-        getLengthStr,
-        getReverseStr
-    };
+        setValue,
+        plus,
+        multiply,
+        minus,
+        pow,
+        getValue,
+    }
 })();
+
+const resault = calculator.setValue(10).pow(2).getValue();
