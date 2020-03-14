@@ -36,14 +36,35 @@ function closureExample() {
     const arrOfFunc = [];
     let value = '';
 
-    for (let i = 0; i< 10; i++) {
+    for (let i = 0; i < 10; i++) {
         value += i;
-        arrOfFunc.push(function() {
-          // console.log(value, i);
+        arrOfFunc.push(function () { // console.log(value, i);
         });
     }
     return arrOfFunc;
 }
 
 const res = closureExample();
-res[9]();  
+res[9]();
+
+/*Создайте функцию которая бы умела делать:
+
+minus(10)(6); // 4
+
+minus(5)(6); // -1
+
+minus(10)(); // 10
+
+minus()(6); // -6
+
+minus()(); // 0
+
+Подсказка, функция minus должна возвращать другую функцию.*/
+
+function minus(a = 0) {
+    return function(b = 0) {
+        return a - b;
+    };
+}
+
+const resM = minus(0)(-6);
