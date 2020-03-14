@@ -217,3 +217,8 @@ function createPhrase(arr) {
     return sortObjectsSymbols;
 }
 const allPhrase = createPhrase(objsOfSymbols);
+
+//Отсортируйте массив массивов так, чтобы вначале располагались наименьшие массивы (размер массива определяется его длиной): [ [14, 45], [1], ['a', 'c', 'd'] ] → [ [1], [14, 45], ['a', 'c', 'd'] ]
+
+const arrayOfArrays = [ [14, 45], [1], ['a', 'c', 'd'] ];
+arrayOfArrays.sort((prev, next) => prev.length - next.length);
