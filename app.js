@@ -93,7 +93,7 @@ const http = customHttp();
 
 function getPost(id) {
     return new Promise((resolve, reject) => {
-        http.get('https://jsonplaceholder.typicode.com/posts/1', (err, res) => {
+        http.get(`https://jsonplaceholder.typicode.com/posts/${id}`, (err, res) => {
             if (err) {
                 reject(err);
             }
@@ -102,30 +102,32 @@ function getPost(id) {
     });
 }
 
-function getPostComments() {
+function getPostComments(post) {
+    const {id} = post;
     return new Promise((resolve, reject) => {
-        http.get('https://jsonplaceholder.typicode.com/comments?postId=1', (err, res) => {
+        http.get(`https://jsonplaceholder.typicode.com/comments?postId=${id}`, (err, res) => {
             if (err) {
                 reject(err);
             }
-            resolve(res);
+            resolve({post, comments: res});
         });
     });
 }
 
-function getUserCreatedPost() {
+function getUserCreatedPost(data) {
+    const {post: {userId},} = data;
     return new Promise((resolve, reject) => {
-        http.get('https://jsonplaceholder.typicode.com/uspers/1', (err, res) => {
+        http.get('https://jsonplaceholder.typicode.com/users/1', (err, res) => {
             if (err) {
                 reject(err);
             }
-            resolve(res);
+            resolve({...data, user: res});
         });
     });
 }
 
-getPost()
-    .then(posts => getPostComments())
-    .then(comments => getUserCreatedPost())
-    .then(user => console.log(user))
+getPost(5)
+    .then(post => getPostComments(post))
+    .then(data => getUserCreatedPost(data))
+    .then(fullData => console.log(fullData))
     .catch(err => console.log(err));
