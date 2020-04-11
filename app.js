@@ -115,7 +115,7 @@ function getPostComments() {
 
 function getUserCreatedPost() {
     return new Promise((resolve, reject) => {
-        http.get('https://jsonplaceholder.typicode.com/users/1', (err, res) => {
+        http.get('https://jsonplaceholder.typicode.com/uspers/1', (err, res) => {
             if (err) {
                 reject(err);
             }
@@ -127,4 +127,5 @@ function getUserCreatedPost() {
 getPost()
     .then(posts => getPostComments())
     .then(comments => getUserCreatedPost())
-    .then(user => console.log(user));
+    .then(user => console.log(user))
+    .catch(err => console.log(err));
