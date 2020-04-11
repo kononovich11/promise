@@ -126,11 +126,53 @@ function getUserCreatedPost(data) {
     });
 }
 
-getPost(5)
+/*getPost(5)
     .then(post => getPostComments(post))
     .then(data => getUserCreatedPost(data))
     .then(fullData => console.log(fullData))
     .catch(err => console.log(err))
-    .finally(() => console.log('finaly'));
+    .finally(() => console.log('finaly'));*/
 
 
+function getPost2(id) {
+    return new Promise((resolve, reject) => {
+        http.get(`https://jsonplaceholder.typicode.com/posts/${id}`, (err, res) => {
+            if (err) {
+                reject(err);
+            }
+            resolve(res);
+        });
+    });
+}
+
+function getPostComments2(id) {
+    //const {id} = post;
+    return new Promise((resolve, reject) => {
+        http.get(`https://jsonplaceholder.typicode.com/comments?postId=${id}`, (err, res) => {
+            if (err) {
+                reject(err);
+            }
+            resolve(res);
+        });
+    });
+}
+
+function getUserCreatedPost2(userId) {
+    //const {post: {userId},} = data;
+    return new Promise((resolve, reject) => {
+        http.get('https://jsonplaceholder.typicode.com/users/1', (err, res) => {
+            if (err) {
+                reject(err);
+            }
+            resolve(res);
+        });
+    });
+}
+
+Promise.all([
+    getPost2(3),
+    getPostComments2(5),
+    getUserCreatedPost2(1),
+])
+.then(fulldata => console.log(fulldata))
+.catch(err => console.log(err));
