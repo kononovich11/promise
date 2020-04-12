@@ -1,4 +1,4 @@
-const promise = new Promise((resolve, reject) => {
+/*const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
         reject('error', 1000);
     });
@@ -124,7 +124,7 @@ function getUserCreatedPost(data) {
             resolve({...data, user: res});
         });
     });
-}
+}*/
 
 /*getPost(5)
     .then(post => getPostComments(post))
@@ -133,7 +133,7 @@ function getUserCreatedPost(data) {
     .catch(err => console.log(err))
     .finally(() => console.log('finaly'));*/
 
-
+/*
 function getPost2(id) {
     return new Promise((resolve, reject) => {
         http.get(`https://jsonplaceholder.typicode.com/posts/${id}`, (err, res) => {
@@ -175,4 +175,11 @@ Promise.all([
     getUserCreatedPost2(1),
 ])
 .then(fulldata => console.log(fulldata))
-.catch(err => console.log(err));
+.catch(err => console.log(err)); */
+
+fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(response => {
+        return response.json();
+    })
+    .then(posts => console.log(posts))
+    .catch(err => console.log(err));
