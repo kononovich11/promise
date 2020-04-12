@@ -186,13 +186,19 @@ Promise.all([
 
 function getPost(id) {
     return new Promise((resolve, reject) => {
-       fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-       .then(response =>{
-           return response.json()
-        })
-        .then(posts => resolve(posts))
-        .catch(err => console.log(err));
+        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then(response => {
+            return response.json()
+        }).then(posts => resolve(posts)).catch(err => reject(err));
     });
 }
 
-getPost(1).then(post => console.log(post));
+// getPost(1).then(post => console.log(post));
+
+function getPosts2(id) {
+    return fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then(response => {
+        return response.json()
+    });
+}
+getPosts2(1)
+.then(post => console.log(post))
+.catch(err => console.log(err));
