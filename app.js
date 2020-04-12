@@ -177,9 +177,22 @@ Promise.all([
 .then(fulldata => console.log(fulldata))
 .catch(err => console.log(err)); */
 
-fetch('https://jsonplaceholder.typicode.com/posts')
+/*fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => {
         return response.json();
     })
     .then(posts => console.log(posts))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err)); */
+
+function getPost(id) {
+    return new Promise((resolve, reject) => {
+       fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+       .then(response =>{
+           return response.json()
+        })
+        .then(posts => resolve(posts))
+        .catch(err => console.log(err));
+    });
+}
+
+getPost(1).then(post => console.log(post));
